@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "f1_vs_motogp"
+version = "0.1.0"
+description = "Formula 1 vs MotoGP: lap times at shared circuits and which championship is more competitive (2014-2026)."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "pyarrow>=14",
+    "requests>=2.31",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+    "plotly>=5.20",
+    "streamlit>=1.35",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6", "jupytext>=1.16", "nbconvert>=7", "ipykernel>=6"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"notebooks/*" = ["E402", "E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
